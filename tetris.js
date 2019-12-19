@@ -594,22 +594,22 @@ var mySettings = {
 var settings = mySettings; // initialized by reference; replaced when game starts and replay
 
 var settingName = {
-  DAS: "DAS 加速延迟",
-  ARR: "ARR 重复延迟",
-  Gravity: "Gravity 下落速度",
-  'Soft Drop': "Soft Drop 软降速度",
-  'Lock Delay': "Lock Delay 锁定延迟",
-  RotSys: "Rotation 旋转系统",
-  Next: "Next 预览块数",
-  Size: "Size 大小",
-  Sound: "Sound 声音",
-  Volume: "Volume 音量",
-  Block: "Block 样式",
-  Ghost: "Ghost 影子",
-  Grid: "Grid 网格",
-  Outline: "Outline 方块边缘",
-  DASCut: "DAS Cut 加速打断",
-  NextSide: "Next Side 预览位置"
+  DAS: "DAS",
+  ARR: "ARR",
+  Gravity: "Gravity",
+  'Soft Drop': "Soft Drop",
+  'Lock Delay': "Lock Delay",
+  RotSys: "Rotation",
+  Next: "Next",
+  Size: "Size",
+  Sound: "Sound",
+  Volume: "Volume",
+  Block: "Block",
+  Ghost: "Ghost",
+  Grid: "Grid",
+  Outline: "Outline",
+  DASCut: "DAS Cut",
+  NextSide: "Next Side"
 };
 var setting = {
   DAS: range(0,31),
@@ -748,56 +748,56 @@ var arrStages = [
 ];
 
 var sprintRanks= [
-  {t:600, u:"修仙去吧", b:"Zen"},
-  {t:540, u:"求进9分钟", b:"9 min...?"},
-  {t:480, u:"求进8分钟", b:"8 min...?"},
-  {t:420, u:"求进7分钟", b:"7 min...?"},
-  {t:360, u:"求进6分钟", b:"6 min...?"},
-  {t:300, u:"求进5分钟", b:"5 min...?"},
-  {t:240, u:"终于……", b:"Finally..."},
-  {t:210, u:"<small>你一定是在逗我</small>", b:"Too slow."},
-  {t:180, u:"渣渣", b:"Well..."},
-  {t:160, u:"<small>速度速度加快</small>", b:"Go faster."},
-  {t:140, u:"<small>还能再给力点么</small>", b:"Any more?"},
-  {t:120, u:"2分钟？", b:"Beat 2 min."},
-  {t:110, u:"不难嘛", b:"So easy."},
-  {t:100, u:"新世界", b:"New world."},
-  {t: 90, u:"超越秒针", b:"1 drop/sec!"},
-  {t: 80, u:"恭喜入门", b:"Not bad."},
-  {t: 73, u:"渐入佳境", b:"Going deeper."},
-  {t: 69, u:"就差10秒", b:"10 sec faster."},
-  {t: 63, u:"还有几秒", b:"Approaching."},
-  {t: 60, u:"最后一点", b:"Almost there!"},
-  {t: 56, u:"1分钟就够了", b:"1-min Sprinter!"},
-  {t: 53, u:"并不是沙包", b:"<small>No longer rookie.</small>"},
-  {t: 50, u:"50不是梦", b:"Beat 50."},
-  {t: 48, u:"每秒2块", b:"2 drops/sec!"},
-  {t: 45, u:"很能打嘛", b:"u can tetris."},
-  {t: 42, u:"有点厉害", b:"Interesting."},
-  {t: 40, u:"于是呢？", b:"So?"},
-  {t: 38, u:"高手", b:"Good."},
-  {t: 35, u:"停不下来", b:"Unstoppable."},
-  {t: 33, u:"触手", b:"Octopus"},
-  {t: 31, u:"每秒3块", b:"3 drops/sec!"},
-  {t: 30, u:"别这样", b:"Noooo"},
-  {t: 29, u:"你赢了", b:"You win."},
-  {t: 27, u:"这不魔法", b:"Magic."},
-  {t: 25, u:"闪电", b:"Lightning!"},
-  {t: 24, u:"每秒4块", b:"4 drops/sec!"},
-  {t: 23, u:"神兽", b:"Alien."},
-  {t: 22, u:"神兽他妈", b:"Beats Alien."},
-  {t: 21, u:"拯救地球", b:"<small>Save the world?</small>"},
-  {t: 20, u:"你确定？", b:"r u sure?"},
-  {t: 19, u:"5块每秒", b:"5pps"},
-  {t: 18, u:"……", b:"..."},
-  {t: 16.66, u:"…………", b:"......"},
-  {t: 14.28, u:"6块每秒", b:"6pps"},
-  {t: 12.50, u:"7块每秒", b:"7pps"},
-  {t: 11.11, u:"8块每秒", b:"8pps"},
-  {t: 10.00, u:"9块每秒", b:"9pps"},
-  {t:  9.00, u:"10块每秒", b:"10pps"},
-  {t:  0.00, u:"←_←", b:"→_→"},
-  {t:  -1/0, u:"↑_↑", b:"↓_↓"}
+  {t:600, b:"Zen"},
+  {t:540, b:"9 min...?"},
+  {t:480, b:"8 min...?"},
+  {t:420, b:"7 min...?"},
+  {t:360, b:"6 min...?"},
+  {t:300, b:"5 min...?"},
+  {t:240, b:"Finally..."},
+  {t:210, b:"Too slow."},
+  {t:180, b:"Well..."},
+  {t:160, b:"Gotta go fast."},
+  {t:140, b:"Any more?"},
+  {t:120, b:"Beat 2 min."},
+  {t:110, b:"So easy."},
+  {t:100, b:"New world."},
+  {t: 90, b:"1 drop/sec!"},
+  {t: 80, b:"Not bad."},
+  {t: 73, b:"Going deeper."},
+  {t: 69, b:"10 sec faster."},
+  {t: 63, b:"Approaching."},
+  {t: 60, b:"Almost there!"},
+  {t: 56, b:"1-min Sprinter!"},
+  {t: 53, b:"<small>No longer rookie.</small>"},
+  {t: 50, b:"Beat 50."},
+  {t: 48, b:"2 drops/sec!"},
+  {t: 45, b:"u can tetris."},
+  {t: 42, b:"Interesting."},
+  {t: 40, b:"So?"},
+  {t: 38, b:"Good."},
+  {t: 35, b:"Unstoppable."},
+  {t: 33, b:"Octopus"},
+  {t: 31, b:"3 drops/sec!"},
+  {t: 30, b:"Noooo"},
+  {t: 29, b:"You win."},
+  {t: 27, b:"Magic."},
+  {t: 25, b:"Lightning!"},
+  {t: 24, b:"4 drops/sec!"},
+  {t: 23, b:"Alien."},
+  {t: 22, b:"Beats Alien."},
+  {t: 21, b:"<small>Save the world?</small>"},
+  {t: 20, b:"r u sure?"},
+  {t: 19, b:"5pps"},
+  {t: 18, b:"..."},
+  {t: 16.66, b:"......"},
+  {t: 14.28, b:"6pps"},
+  {t: 12.50, b:"7pps"},
+  {t: 11.11, b:"8pps"},
+  {t: 10.00, b:"9pps"},
+  {t:  9.00, b:"10pps"},
+  {t:  0.00, b:"→_→"},
+  {t:  -1/0, b:"↓_↓"}
 ];
 
 var frame;
@@ -1034,7 +1034,7 @@ function init(gt, params) {
         if(replay.keys === null)
           throw "keys decode fail"
       } catch(e) {
-        alert("invalid replay data... 回放数据有误...\n" + e.toString());
+        alert("invalid replay data...\n" + e.toString());
         return;
       }
     }
@@ -1825,9 +1825,9 @@ function gameLoop() {
         if (gameState === 2) {
           // Count Down
           if (frame === 0) {
-            $setText(msg,'各就各位\nREADY');
+            $setText(msg,'READY');
           } else if (frame === ~~(fps*5/6)) {
-            $setText(msg,'走着~\nGO!');
+            $setText(msg,'GO!');
           } else if (frame === ~~(fps*10/6)) {
             $setText(msg,'');
             scoreStartTime = Date.now();
@@ -1931,7 +1931,7 @@ function checkWin(){
             break;
           }
         }
-        msg.innerHTML = rank.u + "<br /><small>" + rank.b +"</small>";
+        msg.innerHTML = rank.b +"</small>";
       }
       piece.dead = true;
       menu(3);
@@ -1978,7 +1978,7 @@ var playername=void 0;
 
 function requireplayername(){
   if(playername===void 0)
-    playername=prompt("Enter your name for leaderboard\n('cancel' = anonymous):\n请输入上榜大名：","");
+    playername=prompt("Enter your name for leaderboard\n","");
   if(playername===null)
     playername="anonymous";
   if(playername==="")
@@ -2029,7 +2029,7 @@ function trysubmitscore() {
     obj.replay=curreplaydata();
 
     submitscore(obj);
-  }else{
+  } else{
     submitscore(obj);
   }
 }
