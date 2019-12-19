@@ -1437,9 +1437,21 @@ function makeSprite() {
     } else if (settings.Block === 2) {
 
       // Custom [Pure]
-      var k = 0;
-      spriteCtx.fillStyle = shaded[i][0];
+      var k = Math.max(~~(cellSize * 0.15), 1);
+      spriteCtx.shadowBlur = 10;
+      spriteCtx.shadowColor = '#ffffff';
+      var grd = spriteCtx.createLinearGradient(0,0, 100,100);
+      grd.addColorStop(0, '#4da3ff');
+      grd.addColorStop(1, '#db87ff');
+
+      // Fill with gradient
+      spriteCtx.fillStyle = grd;
+
+      // Set the fill style and draw a rectangle
       spriteCtx.fillRect(x + k, k, cellSize - k * 2, cellSize - k * 2);
+      spriteCtx.strokeStyle = '#ffffff';
+      spriteCtx.lineWidth = 2;
+      spriteCtx.strokeRect(x + k - 1, k - 1, cellSize - k * 2 + 2, cellSize - k * 2 + 2);
 
     } else if (settings.Block === 3 || settings.Block === 4) {
       var k = Math.max(~~(cellSize * 0.125), 1);
@@ -1484,13 +1496,13 @@ function draw(tetro, cx, cy, ctx, color, darkness) {
   for (var x = 0, len = tetro.length; x < len; x++) {
     for (var y = 0, wid = tetro[x].length; y < wid; y++) {
       if (tetro[x][y]) {
-        drawCell(x + cx, y + cy, color !== void 0 ? color : tetro[x][y], ctx, darkness);
+        drawCell(x + cx, y + cy, color !== void 0 ? color : tetro[x][y], ctx, 0.0);
       }
     }
   }
 }
 
-// [Pure]
+// [Pure] Draw ghost
 function drawGhost(tetro, cx, cy, ctx, color, darkness) {
   ctx.strokeStyle = '#ffffff';
   for (var x = 0, len = tetro.length; x < len; x++) {
@@ -1498,6 +1510,8 @@ function drawGhost(tetro, cx, cy, ctx, color, darkness) {
       var xGrid = Math.floor((x + cx) * cellSize);
       var yGrid = Math.floor((y + cy) * cellSize);
       if (tetro[x][y]) {
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#ffffff';
 
         // Draw top lines
         if (y > 0) {
@@ -1534,10 +1548,10 @@ function drawGhost(tetro, cx, cy, ctx, color, darkness) {
         } else {
           ctx.strokeRect(xGrid + cellSize, yGrid, 1, cellSize);
         }
-        //drawOutline(x + cx, y + cy, '#ffffff', ctx, darkness);
       }
     }
   }
+  ctx.shadowColor = '#00000000';
 }
 
 

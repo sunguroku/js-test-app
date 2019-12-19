@@ -240,6 +240,7 @@ nav li {
 #content {
   display: table;
   margin: auto;
+  margin-top: 80px;
   background: rgba(0, 0, 0, 0.7);
 }
 /* Canvases */
