@@ -461,9 +461,9 @@ Piece.prototype.draw = function() {
 }
 
 Piece.prototype.drawGhost = function() {
-  activeCtx.globalAlpha = 0.4;
+  activeCtx.globalAlpha = 1.0;
   if (settings.Ghost === 0 && !landed) {
-    draw(this.tetro, this.x,
+    drawGhost(this.tetro, this.x,
          Math.floor(this.y + this.getDrop(2147483647)) - stack.hiddenHeight, activeCtx, 0);
   } else if (settings.Ghost === 1 && !landed) {
     draw(this.tetro, this.x,

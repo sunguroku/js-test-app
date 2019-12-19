@@ -1435,33 +1435,12 @@ function makeSprite() {
       spriteCtx.fillStyle = shaded[i][0];
       spriteCtx.fillRect(x, 0, cellSize, cellSize);
     } else if (settings.Block === 2) {
-      /*
-      // Glossy
-      var k = Math.max(~~(cellSize * 0.1), 1);
 
-      var grad = spriteCtx.createLinearGradient(x, 0, x + cellSize, cellSize);
-      grad.addColorStop(0.5, glossy[i][3]);
-      grad.addColorStop(1, glossy[i][4]);
-      spriteCtx.fillStyle = grad;
-      spriteCtx.fillRect(x, 0, cellSize, cellSize);
-
-      var grad = spriteCtx.createLinearGradient(x, 0, x + cellSize, cellSize);
-      grad.addColorStop(0, glossy[i][2]);
-      grad.addColorStop(0.5, glossy[i][1]);
-      spriteCtx.fillStyle = grad;
-      spriteCtx.fillRect(x, 0, cellSize - k, cellSize - k);
-
-      var grad = spriteCtx.createLinearGradient(x + k, k, x + cellSize - k, cellSize - k);
-      grad.addColorStop(0, shaded[i][0]);
-      grad.addColorStop(0.5, glossy[i][0]);
-      grad.addColorStop(0.5, shaded[i][0]);
-      grad.addColorStop(1, glossy[i][0]);
-      spriteCtx.fillStyle = grad;
-      spriteCtx.fillRect(x + k, k, cellSize - k * 2, cellSize - k * 2);
-      */
-      var k = Math.max(~~(cellSize * 0.1), 1);
+      // Custom [Pure]
+      var k = 0;
       spriteCtx.fillStyle = shaded[i][0];
       spriteCtx.fillRect(x + k, k, cellSize - k * 2, cellSize - k * 2);
+
     } else if (settings.Block === 3 || settings.Block === 4) {
       var k = Math.max(~~(cellSize * 0.125), 1);
 
@@ -1510,6 +1489,57 @@ function draw(tetro, cx, cy, ctx, color, darkness) {
     }
   }
 }
+
+// [Pure]
+function drawGhost(tetro, cx, cy, ctx, color, darkness) {
+  ctx.strokeStyle = '#ffffff';
+  for (var x = 0, len = tetro.length; x < len; x++) {
+    for (var y = 0, wid = tetro[x].length; y < wid; y++) {
+      var xGrid = Math.floor((x + cx) * cellSize);
+      var yGrid = Math.floor((y + cy) * cellSize);
+      if (tetro[x][y]) {
+
+        // Draw top lines
+        if (y > 0) {
+          if (!tetro[x][y - 1]) {
+            ctx.strokeRect(xGrid, yGrid, cellSize, 1);
+          }
+        } else {
+          ctx.strokeRect(xGrid, yGrid, cellSize, 1);
+        }
+
+        // Draw bottom lines
+        if (y < 3) {
+          if (!tetro[x][y + 1]) {
+            ctx.strokeRect(xGrid, yGrid + cellSize, cellSize, 1);
+          }
+        } else {
+          ctx.strokeRect(xGrid, yGrid + cellSize, cellSize, 1);
+        }
+
+        // Draw left lines
+        if (x > 0) {
+          if (!tetro[x - 1][y]) {
+            ctx.strokeRect(xGrid, yGrid, 1, cellSize);
+          }
+        } else {
+          ctx.strokeRect(xGrid, yGrid, 1, cellSize);
+        }
+
+        // Draw right lines
+        if (x < 3) {
+          if (!tetro[x + 1][y]) {
+            ctx.strokeRect(xGrid + cellSize, yGrid, 1, cellSize);
+          }
+        } else {
+          ctx.strokeRect(xGrid + cellSize, yGrid, 1, cellSize);
+        }
+        //drawOutline(x + cx, y + cy, '#ffffff', ctx, darkness);
+      }
+    }
+  }
+}
+
 
 // ========================== Controller ======================================
 
