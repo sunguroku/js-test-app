@@ -38,4 +38,4 @@ jobs:
       id: deploy_porter
       run: |2
 
-        curl -X POST "https://dashboard.getporter.dev/api/webhooks/deploy/${{secrets.WEBHOOK_MARY_BETH_TETRIS}}?commit=$(git rev-parse --short HEAD)&repository=975032674314.dkr.ecr.eu-west-3.amazonaws.com/mary-beth-tetris-default"
+        curl -X POST "https://dashboard.staging.getporter.dev/api/webhooks/deploy/${{secrets.WEBHOOK_MARY_BETH_TETRIS}}?commit=$(git rev-parse --short HEAD)&repository=975032674314.dkr.ecr.eu-west-3.amazonaws.com/mary-beth-tetris-default"
