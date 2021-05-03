@@ -23,7 +23,7 @@ jobs:
     - name: Configure Porter
       id: configure_porter
       run: |2
-
+        sudo porter config set-host https://dashboard.staging.getporter.dev
         sudo porter auth login --token ${{secrets.PORTER_TOKEN_11}}
         sudo porter docker configure
     - name: Docker build, push
