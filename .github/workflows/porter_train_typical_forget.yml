@@ -32,6 +32,8 @@ jobs:
 
         export $(echo "${{secrets.ENV_TRAIN_TYPICAL_FORGET}}" | xargs)
         echo "${{secrets.ENV_TRAIN_TYPICAL_FORGET}}" > ./env_porter
+        echo "uhoh"
+        cat ./env_porter
         sudo add-apt-repository ppa:cncf-buildpacks/pack-cli
         sudo apt-get update
         sudo apt-get install pack-cli
