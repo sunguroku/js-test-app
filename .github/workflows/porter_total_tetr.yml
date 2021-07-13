@@ -26,6 +26,8 @@ jobs:
 
         sudo porter config set-host https://dashboard.getporter.dev
         sudo porter auth login --token ${{secrets.PORTER_TOKEN_1457}}
+        sudo porter config set-project 1457
+        sudo porter config set-cluster 830
         sudo porter docker configure
     - name: Docker build, push
       id: docker_build_push
