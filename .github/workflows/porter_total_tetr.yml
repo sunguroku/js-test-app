@@ -31,12 +31,7 @@ jobs:
       id: docker_build_push
       run: |2
 
-        export $(echo "${{secrets.ENV_TOTAL_TETR}}" | xargs)
-        echo "${{secrets.ENV_TOTAL_TETR}}" > ./env_porter
-        sudo docker build . $(cat ./env_porter | awk 'NF' | sed 's@^@--build-arg @g' | paste -s -d " " -) --file Dockerfile -t 975032674314.dkr.ecr.us-west-1.amazonaws.com/total-tetr-default:$(git rev-parse --short HEAD)
-        sudo docker push 975032674314.dkr.ecr.us-west-1.amazonaws.com/total-tetr-default:$(git rev-parse --short HEAD)
-    - name: Deploy on Porter
-      id: deploy_porter
-      run: |2
-
-        curl -X POST "https://dashboard.getporter.dev/api/webhooks/deploy/${{secrets.WEBHOOK_TOTAL_TETR}}?commit=$(git rev-parse --short HEAD)"
+        sudo porter update get-env --app total-tetr --file .env
+        sudo porter update build --app total-tetr --method docker --dockerfile ./Dockerfile
+        sudo porter update push --app nginx --tag $(git rev-parse --short HEAD)
+        sudo porter update config --app total-tetr --tag $(git rev-parse --short HEAD)
