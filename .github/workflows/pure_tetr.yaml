@@ -34,6 +34,6 @@ jobs:
       run: |2
 
         sudo porter update get-env --app total-tetr --file .env
-        sudo porter update build --app total-tetr --method docker --dockerfile ./Dockerfile
-        sudo porter update push --app nginx --tag $(git rev-parse --short HEAD)
+        sudo porter update build --app total-tetr --method docker --dockerfile ./Dockerfile --tag $(git rev-parse --short HEAD)
+        sudo porter update push --app total-tetr --tag $(git rev-parse --short HEAD)
         sudo porter update config --app total-tetr --tag $(git rev-parse --short HEAD)
