@@ -1,6 +1,13 @@
 version: v1
 resources:
+# - name: postgres
+#   source:
+#     name: postgresql
+#   config:
+#     postgresqlPassword: testing
 - name: web
+#   depends_on:
+#   - postgres
   source:
     name: web
   config:
@@ -11,5 +18,9 @@ resources:
       ingress:
         enabled: false
       container:
-        command: node index.js
-        port: 3000
+        command: web
+        port: 8000
+        env:
+          normal:
+            POSTGRES_USERNAME: "{ .postgres.postgresqlUsername }"
+            POSTGRES_PASSWORD: "{ .postgres.postgresqlPassword }"
