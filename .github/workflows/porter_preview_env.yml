@@ -29,17 +29,17 @@ jobs:
       uses: porter-dev/porter-preview-action@v0.2.1
       with:
         action_id: ${{ github.run_id }}
-        cluster: "1"
-        host: https://5c24-131-239-192-194.ngrok.io
-        installation_id: "30668812"
+        cluster: "3"
+        host: https://cac5-160-72-72-58.ngrok.io
+        installation_id: "33918281"
         namespace: pr-${{ github.event.inputs.pr_number }}-js-test-app
         pr_branch_from: ${{ github.event.inputs.pr_branch_from }}
         pr_branch_into: ${{ github.event.inputs.pr_branch_into }}
         pr_id: ${{ github.event.inputs.pr_number }}
         pr_name: ${{ github.event.inputs.pr_title }}
-        project: "1"
+        project: "2"
         repo_name: js-test-app
         repo_owner: portersupport
-        token: ${{ secrets.PORTER_PREVIEW_1_1 }}
+        token: ${{ secrets.PORTER_PREVIEW_2_3 }}
     concurrency:
       group: ${{ github.workflow }}-${{ github.event.inputs.pr_number }}
