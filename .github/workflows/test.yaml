@@ -23,5 +23,5 @@ jobs:
           project: 777
           namespace: kube-public
           token: ${{ secrets.PORTER_TOKEN_777 }}
-          dockerfile: ./docker//Dockerfile
+          dockerfile: ./docDockerfile
           tag: ${{ steps.vars.outputs.sha_short }}
