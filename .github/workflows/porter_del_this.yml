@@ -17,9 +17,9 @@ jobs:
       uses: porter-dev/porter-update-action@v0.1.0
       with:
         app: del-this
-        cluster: "2541"
+        cluster: "2575"
         host: https://dashboard.getporter.dev
         namespace: default
-        project: "6680"
+        project: "6716"
         tag: ${{ steps.vars.outputs.sha_short }}
-        token: ${{ secrets.PORTER_TOKEN_6680 }}
+        token: ${{ secrets.PORTER_TOKEN_6716 }}
