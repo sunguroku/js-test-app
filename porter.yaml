@@ -1,15 +1,67 @@
-version: v1
-resources:
-- name: web
-  source:
-    name: web
-  config:
-    build:
-      method: pack
-      builder: heroku/buildpacks:20
-    values:
-      ingress:
-        enabled: false
-      container:
-        command: node index.js
-        port: 3000
+# version: v1
+# resources:
+# - name: web
+#   source:
+#     name: web
+#   config:
+#     build:
+#       method: pack
+#       builder: heroku/buildpacks:20
+#     values:
+#       ingress:
+#         enabled: false
+#       container:
+#         command: node index.js
+#         port: 3000
+
+version: v2beta1
+
+builds:
+    - name: base-image
+        method: pack
+        builder: heroku/buildpacks:20
+        env:
+            raw:
+                API_CLIENT_ID: foobar
+                API_CLIENT_SECRET: foobaz
+            import_from:
+                - default/base-env
+
+apps:
+    - name: webapp1
+        depends_on:
+            - redis
+            - memcached
+        helm_chart:
+            name: web
+        build_ref: base-image
+        helm_values: # refer https://github.com/porter-dev/porter-charts/blob/master/applications/web/values.yaml
+            container:
+                command: node index.js
+            resources:
+                requests:
+                    cpu: 200m
+                    memory: 256Mi
+    - name: webapp2
+        depends_on:
+            - redis
+            - memcached
+        helm_chart:
+            name: web
+        build_ref: base-image
+        helm_values: # refer https://github.com/porter-dev/porter-charts/blob/master/applications/web/values.yaml
+            container:
+                command: node index.js
+            resources:
+                requests:
+                    cpu: 100m
+                    memory: 512Mi
+
+addons:
+    - name: redis
+    helm_chart:
+            name: redis
+  - name: memcached
+        helm_chart:    
+            name: memcached
+        url: https://charts.bitnami.com/bitnami
