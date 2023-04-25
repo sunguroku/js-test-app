@@ -16,7 +16,7 @@ jobs:
       timeout-minutes: 20
       uses: porter-dev/porter-cli-action@v0.1.0
       with:
-        command: apply -f ${{ github.workspace }}/porter-stack.yaml
+        command: apply -f porter-stack.yaml
       env:
         PORTER_HOST: https://dashboard.getporter.dev
         PORTER_CLUSTER: 2489
