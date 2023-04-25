@@ -21,6 +21,6 @@ jobs:
         PORTER_HOST: https://dashboard.getporter.dev
         PORTER_CLUSTER: 2489
         PORTER_PROJECT: 6680
-        PORTER_TOKEN: ${{ secrets.PORTER_TOKEN_6782 }}
+        PORTER_TOKEN: ${{ secrets.TEST_TOKEN }}
         PORTER_TAG: ${{ steps.vars.outputs.sha_short }}
         PORTER_STACK_NAME: new-stack
