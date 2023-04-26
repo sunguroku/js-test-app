@@ -4,7 +4,7 @@ version: v1stack # on launch, from the front-end, and on update, from the releas
 build:
   method: pack
   builder: heroku/buildpacks:20
-  context: '/Users/ferozemohideen/Desktop/js-test-app'
+  context: './'
 
 # type Build struct {
 #   Context    *string   `yaml:"context" validate:"dir"`
