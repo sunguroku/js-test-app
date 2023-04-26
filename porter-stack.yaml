@@ -29,29 +29,13 @@ apps:
           cpu: 200m
           memory: 256Mi
     type: web # on launch, from the front-end and on update, from the release
-  worker-1:
-    run: yarn start worker-1
-    config:
+  web-2:
+    run: launcher node index.js
+    config: # on launch, from the front-end and on update, from the release
       resources:
         requests:
-            cpu: 100m
-            memory: 512Mi
-    type: worker
-  worker-2:
-    run: yarn start worker-2
-    config:
-      resources:
-        requests:
-            cpu: 50m
-            memory: 256Mi
-    type: worker
-  worker-3:
-    run: yarn start worker-3
-    config:
-      resources:
-        requests:
-            cpu: 20m
-            memory: 512Mi
-    type: worker
+          cpu: 200m
+          memory: 256Mi
+    type: web # on launch, from the front-end and on update, from the release
 
 release: yarn release
