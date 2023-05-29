@@ -18,7 +18,7 @@ jobs:
       with:
         command: apply -f porter.yaml
       env:
-        ENABLE_SENTRY: "true"
+        ENABLE_SENTRY: "false"
         PORTER_CLUSTER: "1"
         PORTER_HOST: https://23f1-2600-4041-5000-8c00-355a-fdd-f0b4-4c02.ngrok-free.app
         PORTER_PROJECT: "1"
