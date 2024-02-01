@@ -1,3 +1,0 @@
-apps:
-  my-app-web:
-    run: node index.js 
